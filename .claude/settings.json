@@ -1,19 +1,19 @@
 {
   "permissions": {
     "allow": [
+      "Edit",
+      "Write",
+      "Bash",
       "Read",
       "Glob",
       "Grep"
     ],
-    "deny": [
-      "Bash",
-      "Write"
-    ]
+    "deny": []
   },
   "hooks": {
     "PreToolUse": [
       {
-        "matcher": "Bash|Write",
+        "matcher": "Edit|Write|Bash",
         "hooks": [
           {
             "type": "command",

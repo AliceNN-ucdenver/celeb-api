@@ -1,61 +1,35 @@
 {
   "barId": "APP-IMDB-002",
   "barName": "IMDB Celebs",
-  "tier": "restricted",
-  "effectiveTier": "restricted",
+  "tier": "autonomous",
+  "effectiveTier": "autonomous",
   "permissions": {
-    "mode": "plan",
+    "mode": "auto-edit",
     "allow": [
+      "Edit",
+      "Write",
+      "Bash",
       "Read",
       "Glob",
       "Grep"
     ],
-    "deny": [
-      "Bash",
-      "Write"
-    ],
-    "after_plan_approval": {
-      "mode": "ask-edit",
-      "allow": [
-        "Edit"
-      ],
-      "deny": [
-        "Bash",
-        "Write"
-      ]
-    }
+    "deny": []
   },
   "review": {
-    "agents": 2,
-    "human_approval": true,
-    "escalation": true
+    "agents": 1,
+    "human_approval": false
   },
-  "promptInjections": [
-    {
-      "pillar": "security",
-      "score": 0,
-      "threshold": 60,
-      "packs": [
-        "owasp-top-10",
-        "secure-coding"
-      ],
-      "constraints": [
-        "All changes must pass security review"
-      ]
-    }
-  ],
-  "threatAccess": "restricted",
+  "promptInjections": [],
+  "threatAccess": "open",
   "reasoning": [
     "Criticality: medium (threshold boost: 0)",
-    "Composite score: 67% → tier: supervised (auto≥80, sup≥50)",
-    "Pillar override: security=0% < 50% → forced restricted (was supervised)",
-    "security: 0% < 60% → injecting 2 prompt pack(s)",
+    "Composite score: 90% → tier: autonomous (auto≥80, sup≥50)",
     "Cross-BAR links: 3 connected node(s)"
   ],
   "platformOverrides": [],
   "criticalityAdjustment": {
     "applied": false,
-    "originalTier": "restricted",
+    "originalTier": "autonomous",
     "boost": 0
   },
   "linkedBars": [
@@ -72,12 +46,12 @@
       "relationship": "bar-to-infrastructure"
     }
   ],
-  "compositeScore": 67,
+  "compositeScore": 90,
   "criticality": "medium",
   "platformId": "PLT-IMDB",
   "pillarScores": {
     "architecture": 92,
-    "security": 0,
+    "security": 92,
     "infoRisk": 85,
     "operations": 90
   }

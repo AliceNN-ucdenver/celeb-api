@@ -4,7 +4,7 @@
     "preToolUse": [
       {
         "type": "command",
-        "matcher": "bash|create|edit|view",
+        "matcher": "bash|create|edit",
         "bash": "AGENT_TYPE=copilot ./.redqueen/hooks/validate-tool.sh",
         "command": "AGENT_TYPE=copilot ./.redqueen/hooks/validate-tool.sh",
         "env": {

@@ -1,0 +1,84 @@
+{
+  "barId": "APP-IMDB-002",
+  "barName": "IMDB Celebs",
+  "tier": "restricted",
+  "effectiveTier": "restricted",
+  "permissions": {
+    "mode": "plan",
+    "allow": [
+      "Read",
+      "Glob",
+      "Grep"
+    ],
+    "deny": [
+      "Bash",
+      "Write"
+    ],
+    "after_plan_approval": {
+      "mode": "ask-edit",
+      "allow": [
+        "Edit"
+      ],
+      "deny": [
+        "Bash",
+        "Write"
+      ]
+    }
+  },
+  "review": {
+    "agents": 2,
+    "human_approval": true,
+    "escalation": true
+  },
+  "promptInjections": [
+    {
+      "pillar": "security",
+      "score": 0,
+      "threshold": 60,
+      "packs": [
+        "owasp-top-10",
+        "secure-coding"
+      ],
+      "constraints": [
+        "All changes must pass security review"
+      ]
+    }
+  ],
+  "threatAccess": "restricted",
+  "reasoning": [
+    "Criticality: medium (threshold boost: 0)",
+    "Composite score: 67% → tier: supervised (auto≥80, sup≥50)",
+    "Pillar override: security=0% < 50% → forced restricted (was supervised)",
+    "security: 0% < 60% → injecting 2 prompt pack(s)",
+    "Cross-BAR links: 3 connected node(s)"
+  ],
+  "platformOverrides": [],
+  "criticalityAdjustment": {
+    "applied": false,
+    "originalTier": "restricted",
+    "boost": 0
+  },
+  "linkedBars": [
+    {
+      "barName": "IMDB Lite Application",
+      "relationship": "bar-to-bar"
+    },
+    {
+      "barName": "IMDB Identity Service",
+      "relationship": "bar-to-infrastructure"
+    },
+    {
+      "barName": "Image CDN",
+      "relationship": "bar-to-infrastructure"
+    }
+  ],
+  "compositeScore": 67,
+  "criticality": "medium",
+  "platformId": "PLT-IMDB",
+  "pillarScores": {
+    "architecture": 92,
+    "security": 0,
+    "infoRisk": 85,
+    "operations": 90
+  }
+}

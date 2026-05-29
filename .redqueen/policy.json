@@ -1,0 +1,82 @@
+{
+  "barId": "APP-IMDB-002",
+  "barName": "IMDB Celebs",
+  "tier": "restricted",
+  "compositeScore": 67,
+  "rules": {
+    "toolRestrictions": {
+      "restricted": {
+        "deny": [
+          "Bash",
+          "Write"
+        ],
+        "requireApproval": [
+          "Edit"
+        ]
+      },
+      "supervised": {
+        "deny": [],
+        "requireApproval": [
+          "Bash"
+        ]
+      },
+      "autonomous": {
+        "deny": [],
+        "requireApproval": []
+      }
+    },
+    "securityCriticalPaths": [
+      "src/auth/**",
+      "src/crypto/**",
+      "src/security/**",
+      "config/security*",
+      ".env*",
+      "**/*secret*",
+      "**/*credential*"
+    ],
+    "readOnlyPaths": [
+      ".mcp.json",
+      ".claude/**",
+      "AGENTS.md",
+      ".redqueen/**",
+      ".github/hooks/**"
+    ],
+    "allowedConnections": [
+      {
+        "source": "celeb-frontend",
+        "target": "celeb-api",
+        "relationshipId": "celeb-frontend-to-api"
+      },
+      {
+        "source": "celeb-api",
+        "target": "celeb-db",
+        "relationshipId": "celeb-api-to-db"
+      },
+      {
+        "source": "celebs-system",
+        "target": "news-feed",
+        "relationshipId": "celebs-to-newsfeed"
+      },
+      {
+        "source": "IMDB Celebs",
+        "target": "https://github.com/AliceNN-ucdenver/imdb-react-frontend",
+        "relationshipId": "platform-calm:IMDB Lite Application"
+      },
+      {
+        "source": "IMDB Celebs",
+        "target": "https://github.com/AliceNN-ucdenver/imdb-identity",
+        "relationshipId": "platform-calm:IMDB Lite Application"
+      },
+      {
+        "source": "IMDB Celebs",
+        "target": "https://github.com/AliceNN-ucdenver/movie-api",
+        "relationshipId": "platform-calm:IMDB Lite Application"
+      }
+    ],
+    "customRules": []
+  },
+  "auditLog": {
+    "enabled": true,
+    "path": ".redqueen/audit-log.jsonl"
+  }
+}

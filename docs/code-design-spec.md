@@ -10,9 +10,16 @@ The canonical design lives in the governance mesh repo:
 - **Path:** `okrs/OKR-2026Q2-IMDB-001-celeb-api/what/code-design.md`
 - **Link:** [`okrs/OKR-2026Q2-IMDB-001-celeb-api/what/code-design.md`](https://github.com/AliceNN-ucdenver/alicenn-ucdenver-governance-mesh/blob/main/okrs/OKR-2026Q2-IMDB-001-celeb-api/what/code-design.md)
 
-## Your per-repo extract
+## Implemented slice
 
-The per-repo frontmatter for `AliceNN-ucdenver/celeb-api` lives under `## 1. Project Structure` of that source artifact (each target repo gets its own per-repo sub-block in §1 per the WHAT synthesis pack).
+This repo now exposes the `celeb-profile-v1` contract as a public, read-only HTTP endpoint:
+
+- `GET /v1/celebs/:celebId`
+- Input validation on `:celebId` via allowlisted `celeb-<slug>` ids
+- Policy-shaped response that only exposes the safe public profile payload
+- Security headers, origin allowlist, and in-memory rate limiting on the public endpoint
+
+The exported TypeScript contract lives in `src/contracts/celebProfile.ts`.
 
 ## Implementation agent checklist
 

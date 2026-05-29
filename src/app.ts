@@ -28,6 +28,7 @@ app.use((_req, res, next) => {
   next();
 });
 
+// Public read-only contract for imdb-react-frontend; no authentication required.
 app.get('/api/celebrities/:id', (req: Request, res: Response) => {
   const parsedId = celebrityIdSchema.safeParse(req.params.id);
   if (!parsedId.success) {

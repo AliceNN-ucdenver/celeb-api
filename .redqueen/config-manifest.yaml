@@ -2,7 +2,7 @@
 # Auto-generated — do not edit manually
 # Re-generate with: redqueen scaffold --bar "IMDB Celebs"
 
-generated_at: "2026-06-12T17:05:40.333Z"
+generated_at: "2026-06-12T17:05:58.986Z"
 bar_id: APP-IMDB-002
 bar_name: "IMDB Celebs"
 mesh_path: "./governance-mesh"

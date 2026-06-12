@@ -1,4 +1,13 @@
 {
   "version": 1,
-  "approvals": []
+  "approvals": [
+    {
+      "issue": 19,
+      "tier": "restricted",
+      "grantedBy": "AliceNN-ucdenver",
+      "grantedAt": "2026-06-12T18:59:39.036Z",
+      "expiresAt": "2026-06-12T20:59:39.036Z",
+      "reason": "Restricted-tier maintenance remediation"
+    }
+  ]
 }

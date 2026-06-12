@@ -4,18 +4,29 @@ This repository is governed by **The Red Queen** governance system.
 
 ## BAR: IMDB Celebs (APP-IMDB-002)
 
-- **Governance Tier:** autonomous
-- **Composite Score:** 90/100
+- **Governance Tier:** restricted
+- **Composite Score:** 67/100
 - **Criticality:** medium
-- **Permission Mode:** auto-edit
-- **Threat Model Access:** open
+- **Permission Mode:** plan
+- **Threat Model Access:** restricted
 
-## Permissions (Autonomous Tier)
+## Permissions (Restricted Tier)
 
-You may implement freely within `src/`. All changes will be validated
-by the Red Queen pre-tool hooks automatically.
+**Plan first, implement only after approval.** This BAR has governance
+gaps that must be addressed. Before implementing:
+1. Call `governance_gaps` and review all findings
+2. Create a remediation plan
+3. Get human approval before proceeding
 
-**Allowed tools:** Edit, Write, Bash, Read, Glob, Grep
+**Allowed tools:** Read, Glob, Grep
+**Denied tools:** Bash, Write
+
+## Active Constraints
+
+### security Constraints
+The security pillar score (0/100) is below the governance threshold (60).
+- Apply prompt packs: owasp-top-10, secure-coding
+- All changes must pass security review
 
 ## Cross-BAR Dependencies
 

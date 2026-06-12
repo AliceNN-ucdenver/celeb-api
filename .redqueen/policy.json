@@ -1,8 +1,8 @@
 {
   "barId": "APP-IMDB-002",
   "barName": "IMDB Celebs",
-  "tier": "autonomous",
-  "compositeScore": 90,
+  "tier": "restricted",
+  "compositeScore": 67,
   "rules": {
     "toolRestrictions": {
       "restricted": {

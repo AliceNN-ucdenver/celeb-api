@@ -11,20 +11,29 @@
 | **BAR ID** | APP-IMDB-002 |
 | **Platform** | PLT-IMDB |
 | **Criticality** | medium |
-| **Composite Score** | 90% |
-| **Permission Tier** | autonomous |
+| **Composite Score** | 67% |
+| **Permission Tier** | restricted |
 | **Lifecycle** | build |
 
-## Permission Tier: autonomous
+## Permission Tier: restricted
 
-- **Mode:** auto-edit
-- **Allowed:** Edit, Write, Bash, Read, Glob, Grep
-- **Denied:** none
+- **Mode:** plan
+- **Allowed:** Read, Glob, Grep
+- **Denied:** Bash, Write
+- **After Plan Approval:** mode=ask-edit, allow=Edit
 
 ## Review Requirements
 
-- **Agent Reviews:** 1
-- **Human Approval:** Not required
+- **Agent Reviews:** 2
+- **Human Approval:** Required
+- **Escalation:** Enabled
+
+## Active Constraints (MANDATORY)
+
+### security (score 0% < threshold 60%)
+- **Prompt Packs:** owasp-top-10, secure-coding
+- All changes must pass security review
+
 ## Cross-BAR Dependencies
 
 This BAR is linked to the following BARs via platform architecture.
@@ -39,9 +48,9 @@ This BAR is linked to the following BARs via platform architecture.
 - **IMDB Identity Service**: Shared authentication and user management service used by both IMDB Lite and Celebs applications.
 - **Image CDN**: Shared CDN for movie posters, actor headshots, and celebrity images.
 
-## Threat Model Access: open
+## Threat Model Access: restricted
 
-Full threat model is available.
+Threat model details are restricted at this tier. Only risk ratings are available.
 
 ## Escalation Rules
 
@@ -55,7 +64,9 @@ Full threat model is available.
 <summary>Why these constraints?</summary>
 
 - Criticality: medium (threshold boost: 0)
-- Composite score: 90% → tier: autonomous (auto≥80, sup≥50)
+- Composite score: 67% → tier: supervised (auto≥80, sup≥50)
+- Pillar override: security=0% < 50% → forced restricted (was supervised)
+- security: 0% < 60% → injecting 2 prompt pack(s)
 - Cross-BAR links: 3 connected node(s)
 
 </details>
